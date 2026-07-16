@@ -9,9 +9,14 @@ PosRepository::GetSummary() const
 
     store.SetStoreNo("0001");
     store.SetStoreName("Taipei");
-    store.SetTotal(35);
+    store.SetPosCount(35);
 
     stores.push_back(store);
 
-    return stores;
+    return {};
+}
+bool PosRepository::Import(
+    const std::vector<StoreInfo>& stores)
+{
+    return true;
 }

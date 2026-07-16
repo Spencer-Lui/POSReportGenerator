@@ -1,27 +1,66 @@
 #pragma once
+
 #include <string>
+
 class StoreInfo
 {
 public:
-	StoreInfo();
 
-	const std::string& GetStoreNo() const;
+    StoreInfo();
 
-	const std::string& GetStoreName() const;
+    //-----------------------------------------
+    // Getter
+    //-----------------------------------------
 
-	int GetTotal() const;
+    const std::string& GetStoreNo() const;
 
-	void SetStoreNo(const std::string& storeNo);
+    const std::string& GetStoreName() const;
 
-	void SetStoreName(const std::string& storeName);
+    const std::string& GetUpdateStatus() const;
 
-	void SetTotal(int total);
+    int GetPosCount() const;
+
+    int GetUpdatedPos() const;
+
+    int GetUpdateRate() const;
+
+    const std::string& GetOpenDate() const;
+
+    //-----------------------------------------
+    // Setter
+    //-----------------------------------------
+
+    void SetStoreNo(const std::string& storeNo);
+
+    void SetStoreName(const std::string& storeName);
+
+    void SetUpdateStatus(const std::string& updateStatus);
+
+    void SetPosCount(int posCount);
+
+    void SetUpdatedPos(int updatedPos);
+
+    void SetUpdateRate(int updateRate);
+
+    void SetOpenDate(const std::string& openDate);
 
 private:
-	std::string m_storeNo;
 
-	std::string m_storeName;
+    //-----------------------------------------
+    // Member Variable
+    //-----------------------------------------
 
-	int m_total;
+    std::string m_storeNo;
+
+    std::string m_storeName;
+
+    std::string m_updateStatus;
+
+    int m_posCount;
+
+    int m_updatedPos;
+
+    int m_updateRate;
+
+    std::string m_openDate;
 };
-

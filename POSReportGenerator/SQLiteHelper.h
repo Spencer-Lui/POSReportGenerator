@@ -16,6 +16,9 @@ public:
 
     void Close();
 
+    bool ExecuteNonQuery(
+        const std::string& sql);
+
 private:
 
     sqlite3* m_db;

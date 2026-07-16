@@ -71,7 +71,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\user\source\repos\POSReportGenerator\POSReportGenerator\ThirdParty\SQLite;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)ThirdParty\SQLite;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -142,7 +142,10 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DatabaseInitializer.cpp" />
+    <ClCompile Include="DatabaseResult.cpp" />
     <ClCompile Include="ExcelReader.cpp" />
+    <ClCompile Include="ImportService.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PosRepository.cpp" />
     <ClCompile Include="SQLiteHelper.cpp" />
@@ -150,13 +153,17 @@
     <ClCompile Include="ThirdParty\SQLite\sqlite3.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DatabaseInitializer.h" />
+    <ClInclude Include="DatabaseResult.h" />
     <ClInclude Include="ExcelReader.h" />
+    <ClInclude Include="ImportService.h" />
     <ClInclude Include="PosRepository.h" />
     <ClInclude Include="SQLiteHelper.h" />
     <ClInclude Include="StoreInfo.h" />
     <ClInclude Include="ThirdParty\SQLite\sqlite3.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\071301.csv" />
     <None Include="Resources\071301.xlsx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

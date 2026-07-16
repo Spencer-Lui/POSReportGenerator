@@ -33,6 +33,15 @@
     <ClCompile Include="SQLiteHelper.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
+    <ClCompile Include="DatabaseResult.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="DatabaseInitializer.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="ImportService.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StoreInfo.h">
@@ -50,9 +59,21 @@
     <ClInclude Include="SQLiteHelper.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
+    <ClInclude Include="DatabaseResult.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="DatabaseInitializer.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="ImportService.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\071301.xlsx">
+      <Filter>資源檔</Filter>
+    </None>
+    <None Include="Resources\071301.csv">
       <Filter>資源檔</Filter>
     </None>
   </ItemGroup>

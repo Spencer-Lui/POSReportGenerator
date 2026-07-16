@@ -4,28 +4,34 @@
 #include <iostream>
 
 #include "StoreInfo.h"
-
-#include "PosRepository.h"
-
 #include "SQLiteHelper.h"
+#include "PosRepository.h"
+#include "DatabaseInitializer.h"
+#include "ExcelReader.h"
+
 
 int main()
 {
-    //std::cout << "Hello World!\n";
-    SQLiteHelper db;
+    DatabaseInitializer initializer;
 
-    if (db.Open("Resources/POSReport.db"))
+    if (initializer.Initialize())
     {
         std::cout
-            << "Database Open Success!"
+            << "Database Initialize Success!"
             << std::endl;
     }
     else
     {
         std::cout
-            << "Database Open Failed!"
+            << "Database Initialize Failed!"
             << std::endl;
     }
+
+    ExcelReader reader;
+
+    auto stores =
+        reader.ReadStoreSummary(
+            "Resources/071301.csv");
 
     return 0;
 }

@@ -34,3 +34,28 @@ void SQLiteHelper::Close()
         m_db = nullptr;
     }
 }
+bool SQLiteHelper::ExecuteNonQuery(
+    const std::string& sql)
+{
+    char* errorMessage = nullptr;
+
+    int result =
+        sqlite3_exec(
+            m_db,
+            sql.c_str(),
+            nullptr,
+            nullptr,
+            &errorMessage);
+
+    if (result != SQLITE_OK)
+    {
+        if (errorMessage != nullptr)
+        {
+            sqlite3_free(errorMessage);
+        }
+
+        return false;
+    }
+
+    return true;
+}
