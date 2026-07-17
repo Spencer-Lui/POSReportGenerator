@@ -33,6 +33,52 @@ int main()
         reader.ReadStoreSummary(
             "Resources/071301.csv");
 
+    std::cout
+        << "Store Count : "
+        << stores.size()
+        << std::endl;
+
+    if (!stores.empty())
+    {
+        const StoreInfo& store =
+            stores.front();
+
+        std::cout
+            << "StoreNo : "
+            << store.GetStoreNo()
+            << std::endl;
+
+        std::cout
+            << "StoreName : "
+            << store.GetStoreName()
+            << std::endl;
+
+        std::cout
+            << "UpdateStatus : "
+            << store.GetUpdateStatus()
+            << std::endl;
+
+        std::cout
+            << "PosCount : "
+            << store.GetPosCount()
+            << std::endl;
+
+        std::cout
+            << "UpdatedPos : "
+            << store.GetUpdatedPos()
+            << std::endl;
+
+        std::cout
+            << "UpdateRate : "
+            << store.GetUpdateRate()
+            << std::endl;
+
+        std::cout
+            << "OpenDate : "
+            << store.GetOpenDate()
+            << std::endl;
+    }
+
     return 0;
 }
 
