@@ -8,12 +8,15 @@ class PosRepository
 public:
 
     std::vector<StoreInfo>
-        GetSummary() const;
+        GetSummary();
 
     bool Import(
         const std::vector<StoreInfo>& stores);
 
 private:
+
+    bool InsertStore(
+        const StoreInfo& store);
 
     SQLiteHelper m_database;
 };

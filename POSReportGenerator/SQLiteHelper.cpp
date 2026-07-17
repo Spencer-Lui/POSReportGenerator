@@ -1,5 +1,36 @@
+#include <vector>
 #include "SQLiteHelper.h"
 
+
+static int QueryCallback(
+    void* data,
+    int columnCount,
+    char** values,
+    char** columnNames)
+{
+    auto* rows =
+        static_cast<
+        std::vector<
+        std::vector<std::string>>*>(data);
+
+    std::vector<std::string> row;
+
+    for (int i = 0; i < columnCount; ++i)
+    {
+        if (values[i] != nullptr)
+        {
+            row.push_back(values[i]);
+        }
+        else
+        {
+            row.push_back("");
+        }
+    }
+
+    rows->push_back(row);
+
+    return 0;
+}
 SQLiteHelper::SQLiteHelper()
     : m_db(nullptr)
 {
@@ -58,4 +89,32 @@ bool SQLiteHelper::ExecuteNonQuery(
     }
 
     return true;
+}
+std::vector<std::vector<std::string>>
+SQLiteHelper::ExecuteQuery(
+    const std::string& sql)
+{
+    std::vector<std::vector<std::string>> rows;
+
+    char* errorMessage = nullptr;
+
+    int result =
+        sqlite3_exec(
+            m_db,
+            sql.c_str(),
+            QueryCallback,
+            &rows,
+            &errorMessage);
+
+    if (result != SQLITE_OK)
+    {
+        if (errorMessage != nullptr)
+        {
+            sqlite3_free(errorMessage);
+        }
+
+        return {};
+    }
+
+    return rows;
 }
