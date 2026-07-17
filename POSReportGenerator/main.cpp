@@ -33,6 +33,21 @@ int main()
         reader.ReadStoreSummary(
             "Resources/071301.csv");
 
+    PosRepository repository;
+
+    if (repository.Import(stores))
+    {
+        std::cout
+            << "Import Success!"
+            << std::endl;
+    }
+    else
+    {
+        std::cout
+            << "Import Failed!"
+            << std::endl;
+    }
+
     std::cout
         << "Store Count : "
         << stores.size()

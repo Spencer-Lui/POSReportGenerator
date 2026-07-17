@@ -1,4 +1,5 @@
 #include "PosRepository.h"
+#include "SQLiteHelper.h"
 
 std::vector<StoreInfo>
 PosRepository::GetSummary() const
@@ -18,5 +19,25 @@ PosRepository::GetSummary() const
 bool PosRepository::Import(
     const std::vector<StoreInfo>& stores)
 {
+    if (!m_database.Open(
+        "Resources/POSReport.db"))
+    {
+        return false;
+    }
+
+    //-----------------------------------
+    // 清空舊資料
+    //-----------------------------------
+
+    if (!m_database.ExecuteNonQuery(
+        "DELETE FROM StoreSummary;"))
+    {
+        m_database.Close();
+
+        return false;
+    }
+
+    m_database.Close();
+
     return true;
 }

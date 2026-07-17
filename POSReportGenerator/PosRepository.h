@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 #include "StoreInfo.h"
+#include "SQLiteHelper.h"
+
 class PosRepository
 {
 public:
@@ -10,5 +12,9 @@ public:
 
     bool Import(
         const std::vector<StoreInfo>& stores);
+
+private:
+
+    SQLiteHelper m_database;
 };
 
