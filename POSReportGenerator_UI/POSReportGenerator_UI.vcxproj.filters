@@ -33,5 +33,25 @@
     <ClCompile Include="..\ThirdParty\imgui\backends\imgui_impl_win32.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWindow.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ThirdParty\imgui\examples\example_win32_directx11\main.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ThirdParty\imgui\imgui_demo.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Application.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="MainWindow.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

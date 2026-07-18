@@ -143,10 +143,18 @@
   <ItemGroup>
     <ClCompile Include="..\ThirdParty\imgui\backends\imgui_impl_dx11.cpp" />
     <ClCompile Include="..\ThirdParty\imgui\backends\imgui_impl_win32.cpp" />
+    <ClCompile Include="..\ThirdParty\imgui\examples\example_win32_directx11\main.cpp" />
     <ClCompile Include="..\ThirdParty\imgui\imgui.cpp" />
+    <ClCompile Include="..\ThirdParty\imgui\imgui_demo.cpp" />
     <ClCompile Include="..\ThirdParty\imgui\imgui_draw.cpp" />
     <ClCompile Include="..\ThirdParty\imgui\imgui_tables.cpp" />
     <ClCompile Include="..\ThirdParty\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="Application.cpp" />
+    <ClCompile Include="MainWindow.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Application.h" />
+    <ClInclude Include="MainWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
