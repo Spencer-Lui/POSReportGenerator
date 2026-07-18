@@ -97,6 +97,32 @@ int main()
     return 0;
 }
 
+
+//main()
+//
+//↓
+//
+//DatabaseInitializer
+//
+//↓
+//
+//ExcelReader
+//
+//↓
+//
+//StoreService.Import()
+//
+//↓
+//
+//StoreService.GetSummary()
+//
+//↓
+//
+//Console
+//
+//（之後換成 MFC）
+
+
 // 執行程式: Ctrl + F5 或 [偵錯] > [啟動但不偵錯] 功能表
 // 偵錯程式: F5 或 [偵錯] > [啟動偵錯] 功能表
 
