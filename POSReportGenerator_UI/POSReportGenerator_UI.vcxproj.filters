@@ -39,10 +39,10 @@
     <ClCompile Include="MainWindow.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
-    <ClCompile Include="..\ThirdParty\imgui\examples\example_win32_directx11\main.cpp">
+    <ClCompile Include="..\ThirdParty\imgui\imgui_demo.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
-    <ClCompile Include="..\ThirdParty\imgui\imgui_demo.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
   </ItemGroup>
