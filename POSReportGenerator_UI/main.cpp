@@ -13,6 +13,7 @@
 #include <tchar.h>
 #include "PosRepository.h"
 #include "MainWindow.h"
+#include "Application.h"
 
 // Data
 static ID3D11Device*            g_pd3dDevice = nullptr;
