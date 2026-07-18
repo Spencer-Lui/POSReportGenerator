@@ -1,20 +1,75 @@
 #include "PosRepository.h"
 #include "SQLiteHelper.h"
 
+namespace
+{
+    constexpr const char* DATABASE_PATH =
+        "Resources/POSReport.db";
+
+    constexpr const char* SELECT_STORE_SUMMARY =
+        "SELECT * FROM StoreSummary;";
+
+    constexpr const char* DELETE_STORE_SUMMARY =
+        "DELETE FROM StoreSummary;";
+}
+
+static int ToInt(
+    const std::string& value)
+{
+    try
+    {
+        return std::stoi(value);
+    }
+    catch (...)
+    {
+        return 0;
+    }
+}
+
 std::vector<StoreInfo>
 PosRepository::GetSummary()
 {
     std::vector<StoreInfo> stores;
 
     if (!m_database.Open(
-        "Resources/POSReport.db"))
+        DATABASE_PATH))
     {
         return stores;
     }
 
     auto rows =
         m_database.ExecuteQuery(
-            "SELECT * FROM StoreSummary;");
+            SELECT_STORE_SUMMARY);
+
+    for (const auto& row : rows)
+    {
+        if (row.size() < 7)
+        {
+            continue;
+        }
+
+        StoreInfo store;
+
+        store.SetStoreNo(row[0]);
+
+        store.SetStoreName(row[1]);
+
+        store.SetUpdateStatus(row[2]);
+
+        store.SetPosCount(
+            ToInt(row[3]));
+
+        store.SetUpdatedPos(
+            ToInt(row[4]));
+
+        store.SetUpdateRate(
+            ToInt(row[5]));
+
+        store.SetOpenDate(
+            row[6]);
+
+        stores.push_back(store);
+    }
 
     m_database.Close();
 
@@ -24,7 +79,7 @@ bool PosRepository::Import(
     const std::vector<StoreInfo>& stores)
 {
     if (!m_database.Open(
-        "Resources/POSReport.db"))
+        DATABASE_PATH))
     {
         return false;
     }
@@ -34,7 +89,7 @@ bool PosRepository::Import(
     //-----------------------------------
 
     if (!m_database.ExecuteNonQuery(
-        "DELETE FROM StoreSummary;"))
+        DELETE_STORE_SUMMARY))
     {
         m_database.Close();
 
