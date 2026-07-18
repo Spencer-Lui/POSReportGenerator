@@ -100,6 +100,9 @@ int main(int, char**)
 
     // Main loop
     bool done = false;
+
+    MainWindow window;
+
     while (!done)
     {
         // Poll and handle messages (inputs, window resize, etc.)
@@ -178,7 +181,6 @@ int main(int, char**)
             ImGui::Button("Export Excel");
 
             ImGui::End();*/
-            MainWindow window;
 
             window.Draw();
         }
