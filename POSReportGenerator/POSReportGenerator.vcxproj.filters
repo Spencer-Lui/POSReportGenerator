@@ -42,6 +42,9 @@
     <ClCompile Include="ImportService.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
+    <ClCompile Include="StoreService.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StoreInfo.h">
@@ -66,6 +69,9 @@
       <Filter>標頭檔</Filter>
     </ClInclude>
     <ClInclude Include="ImportService.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="StoreService.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
   </ItemGroup>

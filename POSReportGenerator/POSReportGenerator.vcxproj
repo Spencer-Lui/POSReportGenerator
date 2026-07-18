@@ -150,6 +150,7 @@
     <ClCompile Include="PosRepository.cpp" />
     <ClCompile Include="SQLiteHelper.cpp" />
     <ClCompile Include="StoreInfo.cpp" />
+    <ClCompile Include="StoreService.cpp" />
     <ClCompile Include="ThirdParty\SQLite\sqlite3.c" />
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +161,7 @@
     <ClInclude Include="PosRepository.h" />
     <ClInclude Include="SQLiteHelper.h" />
     <ClInclude Include="StoreInfo.h" />
+    <ClInclude Include="StoreService.h" />
     <ClInclude Include="ThirdParty\SQLite\sqlite3.h" />
   </ItemGroup>
   <ItemGroup>

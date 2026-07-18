@@ -48,15 +48,18 @@ int main()
             << std::endl;
     }
 
+    auto queryStores =
+        repository.GetSummary();
+
     std::cout
         << "Store Count : "
-        << stores.size()
+        << queryStores.size()
         << std::endl;
 
-    if (!stores.empty())
+    if (!queryStores.empty())
     {
         const StoreInfo& store =
-            stores.front();
+            queryStores.front();
 
         std::cout
             << "StoreNo : "
@@ -98,29 +101,28 @@ int main()
 }
 
 
-//main()
-//
-//↓
-//
-//DatabaseInitializer
-//
-//↓
-//
+//CSV
+//│
+//▼
 //ExcelReader
-//
-//↓
-//
-//StoreService.Import()
-//
-//↓
-//
-//StoreService.GetSummary()
-//
-//↓
-//
+//│
+//▼
+//stores
+//│
+//▼
+//Repository.Import()
+//│
+//▼
+//SQLite
+//│
+//▼
+//Repository.GetSummary()
+//│
+//▼
+//queryStores
+//│
+//▼
 //Console
-//
-//（之後換成 MFC）
 
 
 // 執行程式: Ctrl + F5 或 [偵錯] > [啟動但不偵錯] 功能表
