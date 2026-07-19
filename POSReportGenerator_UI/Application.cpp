@@ -96,7 +96,7 @@ void Application::EndFrame()
 {
     ImGui::Render();
 
-    /*const float clearColorWithAlpha[4] =
+    const float clearColorWithAlpha[4] =
     {
         m_clearColor.x * m_clearColor.w,
         m_clearColor.y * m_clearColor.w,
@@ -118,7 +118,7 @@ void Application::EndFrame()
 
     ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 
-    m_graphics.GetSwapChain()->Present(1, 0);*/
+    m_graphics.GetSwapChain()->Present(1, 0);
 }
 
 bool Application::IsDone() const

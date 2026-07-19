@@ -26,7 +26,7 @@ static ID3D11RenderTargetView*  g_mainRenderTargetView = nullptr;
 // Forward declarations of helper functions
 //bool CreateDeviceD3D(HWND hWnd);
 //void CleanupDeviceD3D();
-void CreateRenderTarget();
+//void CreateRenderTarget();
 void CleanupRenderTarget();
 LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
@@ -141,10 +141,11 @@ int main(int, char**)
         // Handle window resize (we don't resize directly in the WM_SIZE handler)
         if (g_ResizeWidth != 0 && g_ResizeHeight != 0)
         {
-            CleanupRenderTarget();
-            app.GetGraphics().GetSwapChain()->ResizeBuffers(0, g_ResizeWidth, g_ResizeHeight, DXGI_FORMAT_UNKNOWN, 0);
+            app.GetGraphics().Resize(
+                g_ResizeWidth,
+                g_ResizeHeight);
+
             g_ResizeWidth = g_ResizeHeight = 0;
-            CreateRenderTarget();
         }
 
         // Start the Dear ImGui frame
@@ -179,9 +180,9 @@ int main(int, char**)
 
         //// Present
         //HRESULT hr = g_pSwapChain->Present(1, 0);   // Present with vsync
-        HRESULT hr = app.GetGraphics().GetSwapChain()->Present(1, 0);
+        //HRESULT hr = app.GetGraphics().GetSwapChain()->Present(1, 0);
 
-        g_SwapChainOccluded = (hr == DXGI_STATUS_OCCLUDED);
+        //g_SwapChainOccluded = (hr == DXGI_STATUS_OCCLUDED);
     }
 
     // Cleanup
@@ -240,13 +241,13 @@ int main(int, char**)
 //    if (g_pd3dDevice) { g_pd3dDevice->Release(); g_pd3dDevice = nullptr; }
 //}
 
-void CreateRenderTarget()
-{
-    ID3D11Texture2D* pBackBuffer;
-    g_pSwapChain->GetBuffer(0, IID_PPV_ARGS(&pBackBuffer));
-    g_pd3dDevice->CreateRenderTargetView(pBackBuffer, nullptr, &g_mainRenderTargetView);
-    pBackBuffer->Release();
-}
+//void CreateRenderTarget()
+//{
+//    ID3D11Texture2D* pBackBuffer;
+//    g_pSwapChain->GetBuffer(0, IID_PPV_ARGS(&pBackBuffer));
+//    g_pd3dDevice->CreateRenderTargetView(pBackBuffer, nullptr, &g_mainRenderTargetView);
+//    pBackBuffer->Release();
+//}
 
 void CleanupRenderTarget()
 {

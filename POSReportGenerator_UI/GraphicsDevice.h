@@ -11,6 +11,8 @@ public:
 
     void Shutdown();
 
+    void Resize(UINT width, UINT height);
+
     ID3D11Device* GetDevice() const;
 
     ID3D11DeviceContext* GetDeviceContext() const;

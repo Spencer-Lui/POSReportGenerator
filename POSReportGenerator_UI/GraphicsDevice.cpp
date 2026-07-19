@@ -17,6 +17,20 @@ void GraphicsDevice::Shutdown()
     CleanupDevice();
 }
 
+void GraphicsDevice::Resize(UINT width, UINT height)
+{
+    CleanupRenderTarget();
+
+    m_swapChain->ResizeBuffers(
+        0,
+        width,
+        height,
+        DXGI_FORMAT_UNKNOWN,
+        0);
+
+    CreateRenderTarget();
+}
+
 bool GraphicsDevice::CreateDevice(HWND hwnd)
 {
     //=========================
