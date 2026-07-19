@@ -9,14 +9,6 @@ public:
 
     bool Initialize(HWND hwnd);
 
-    bool CreateDevice(HWND hwnd);
-
-    void CreateRenderTarget();
-
-    void CleanupRenderTarget();
-
-    void CleanupDevice();
-
     void Shutdown();
 
     ID3D11Device* GetDevice() const;
@@ -28,6 +20,14 @@ public:
     ID3D11RenderTargetView* GetRenderTargetView() const;
 
 private:
+
+    bool CreateDevice(HWND hwnd);
+
+    void CreateRenderTarget();
+
+    void CleanupRenderTarget();
+
+    void CleanupDevice();
 
     ID3D11Device* m_device = nullptr;
 

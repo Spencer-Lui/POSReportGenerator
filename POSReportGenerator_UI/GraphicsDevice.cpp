@@ -3,7 +3,9 @@
 bool GraphicsDevice::Initialize(HWND hwnd)
 {
     if (!CreateDevice(hwnd))
+    {
         return false;
+    }
 
     CreateRenderTarget();
 
@@ -12,6 +14,7 @@ bool GraphicsDevice::Initialize(HWND hwnd)
 
 void GraphicsDevice::Shutdown()
 {
+    CleanupDevice();
 }
 
 bool GraphicsDevice::CreateDevice(HWND hwnd)
@@ -76,6 +79,23 @@ bool GraphicsDevice::CreateDevice(HWND hwnd)
         &featureLevel,
         &m_context);
 
+    if (res == DXGI_ERROR_UNSUPPORTED)
+    {
+        res = D3D11CreateDeviceAndSwapChain(
+            nullptr,
+            D3D_DRIVER_TYPE_WARP,
+            nullptr,
+            createDeviceFlags,
+            featureLevelArray,
+            2,
+            D3D11_SDK_VERSION,
+            &sd,
+            &m_swapChain,
+            &m_device,
+            &featureLevel,
+            &m_context);
+    }
+
     if (res != S_OK)
     {
         return false;
@@ -86,6 +106,25 @@ bool GraphicsDevice::CreateDevice(HWND hwnd)
 
 void GraphicsDevice::CleanupDevice()
 {
+    CleanupRenderTarget();
+
+    if (m_swapChain)
+    {
+        m_swapChain->Release();
+        m_swapChain = nullptr;
+    }
+
+    if (m_context)
+    {
+        m_context->Release();
+        m_context = nullptr;
+    }
+
+    if (m_device)
+    {
+        m_device->Release();
+        m_device = nullptr;
+    }
 }
 
 void GraphicsDevice::CreateRenderTarget()
