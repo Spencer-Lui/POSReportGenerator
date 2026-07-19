@@ -1,6 +1,7 @@
 #pragma once
 #include <Windows.h>
 #include "MainWindow.h"
+#include "GraphicsDevice.h"
 
 class Application
 {
@@ -25,4 +26,8 @@ private:
     bool m_done = false;
 
     MainWindow m_mainWindow;
+
+private:
+
+    GraphicsDevice m_graphics;
 };

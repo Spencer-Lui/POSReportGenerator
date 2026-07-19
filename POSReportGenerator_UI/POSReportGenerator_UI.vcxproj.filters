@@ -45,12 +45,18 @@
     <ClCompile Include="main.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
+    <ClCompile Include="GraphicsDevice.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
     <ClInclude Include="MainWindow.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsDevice.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
   </ItemGroup>

@@ -149,11 +149,13 @@
     <ClCompile Include="..\ThirdParty\imgui\imgui_tables.cpp" />
     <ClCompile Include="..\ThirdParty\imgui\imgui_widgets.cpp" />
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="GraphicsDevice.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="GraphicsDevice.h" />
     <ClInclude Include="MainWindow.h" />
   </ItemGroup>
   <ItemGroup>
