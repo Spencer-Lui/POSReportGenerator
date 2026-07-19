@@ -1,4 +1,6 @@
 #pragma once
+#include <Windows.h>
+#include "MainWindow.h"
 
 class Application
 {
@@ -6,13 +8,21 @@ public:
 
     int Run();
 
+    void Render();
+
 private:
 
     bool Initialize();
 
     void Update();
 
-    void Render();
-
     void Shutdown();
+
+private:
+
+    HWND m_hWnd = nullptr;
+
+    bool m_done = false;
+
+    MainWindow m_mainWindow;
 };

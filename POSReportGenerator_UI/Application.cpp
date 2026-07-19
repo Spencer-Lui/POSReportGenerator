@@ -11,7 +11,7 @@ int Application::Run()
     // Main Loop
     //--------------------------------
 
-    while (true)
+    while (!m_done)
     {
         Update();
 
@@ -36,6 +36,7 @@ void Application::Update()
 
 void Application::Render()
 {
+    m_mainWindow.Draw();
 }
 
 void Application::Shutdown()

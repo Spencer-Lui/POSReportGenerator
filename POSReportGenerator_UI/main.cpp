@@ -182,7 +182,9 @@ int main(int, char**)
 
             ImGui::End();*/
 
-            window.Draw();
+			// 2026.07.19 add
+            //window.Draw();
+            app.Render();
         }
 
         // 3. Show another simple window.
