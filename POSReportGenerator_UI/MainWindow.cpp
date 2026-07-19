@@ -10,11 +10,14 @@ void MainWindow::Draw()
 
     ImGui::Separator();
 
-    ImGui::Button("Import CSV");
+    /*ImGui::Button("Import CSV");
 
     ImGui::SameLine();
 
-    ImGui::Button("Export Excel");
+    ImGui::Button("Export Excel");*/
+
+    m_toolbar.Draw();
 
     ImGui::End();
+    
 }
