@@ -11,9 +11,9 @@ public:
 
     void Shutdown();
 
-private:
-
     bool CreateDevice(HWND hwnd);
+
+private:
 
     void CleanupDevice();
 
