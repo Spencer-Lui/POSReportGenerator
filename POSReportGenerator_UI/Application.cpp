@@ -27,6 +27,8 @@ int Application::Run()
 
 bool Application::Initialize()
 {
+    // 目前先不初始化 GraphicsDevice
+
     return true;
 }
 

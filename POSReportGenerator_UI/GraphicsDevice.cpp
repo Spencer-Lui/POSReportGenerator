@@ -2,6 +2,11 @@
 
 bool GraphicsDevice::Initialize(HWND hwnd)
 {
+    if (!CreateDevice(hwnd))
+        return false;
+
+    CreateRenderTarget();
+
     return true;
 }
 
@@ -45,6 +50,10 @@ bool GraphicsDevice::CreateDevice(HWND hwnd)
 
     sd.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
 
+    UINT createDeviceFlags = 0;
+
+    //createDeviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
+
     D3D_FEATURE_LEVEL featureLevel;
 
     const D3D_FEATURE_LEVEL featureLevelArray[2] =
@@ -53,11 +62,11 @@ bool GraphicsDevice::CreateDevice(HWND hwnd)
         D3D_FEATURE_LEVEL_10_0,
     };
 
-    HRESULT hr = D3D11CreateDeviceAndSwapChain(
+    HRESULT res = D3D11CreateDeviceAndSwapChain(
         nullptr,
         D3D_DRIVER_TYPE_HARDWARE,
         nullptr,
-        0,
+        createDeviceFlags,
         featureLevelArray,
         2,
         D3D11_SDK_VERSION,
@@ -67,7 +76,7 @@ bool GraphicsDevice::CreateDevice(HWND hwnd)
         &featureLevel,
         &m_context);
 
-    if (FAILED(hr))
+    if (res != S_OK)
     {
         return false;
     }
@@ -81,9 +90,47 @@ void GraphicsDevice::CleanupDevice()
 
 void GraphicsDevice::CreateRenderTarget()
 {
+    ID3D11Texture2D* pBackBuffer = nullptr;
+
+    m_swapChain->GetBuffer(
+        0,
+        IID_PPV_ARGS(&pBackBuffer));
+
+    m_device->CreateRenderTargetView(
+        pBackBuffer,
+        nullptr,
+        &m_renderTargetView);
+
+    pBackBuffer->Release();
 }
 
 void GraphicsDevice::CleanupRenderTarget()
 {
+    if (m_renderTargetView)
+    {
+        m_renderTargetView->Release();
+        m_renderTargetView = nullptr;
+    }
 }
+
+ID3D11Device* GraphicsDevice::GetDevice() const
+{
+    return m_device;
+}
+
+ID3D11DeviceContext* GraphicsDevice::GetDeviceContext() const
+{
+    return m_context;
+}
+
+IDXGISwapChain* GraphicsDevice::GetSwapChain() const
+{
+    return m_swapChain;
+}
+
+ID3D11RenderTargetView* GraphicsDevice::GetRenderTargetView() const
+{
+    return m_renderTargetView;
+}
+
 

@@ -9,17 +9,23 @@ public:
 
     bool Initialize(HWND hwnd);
 
-    void Shutdown();
-
     bool CreateDevice(HWND hwnd);
-
-private:
-
-    void CleanupDevice();
 
     void CreateRenderTarget();
 
     void CleanupRenderTarget();
+
+    void CleanupDevice();
+
+    void Shutdown();
+
+    ID3D11Device* GetDevice() const;
+
+    ID3D11DeviceContext* GetDeviceContext() const;
+
+    IDXGISwapChain* GetSwapChain() const;
+
+    ID3D11RenderTargetView* GetRenderTargetView() const;
 
 private:
 
@@ -29,6 +35,6 @@ private:
 
     IDXGISwapChain* m_swapChain = nullptr;
 
-    ID3D11RenderTargetView* m_renderTarget = nullptr;
+    ID3D11RenderTargetView* m_renderTargetView = nullptr;
 };
 
