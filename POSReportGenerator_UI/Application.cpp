@@ -40,6 +40,8 @@ bool Application::Initialize()
         return false;
     }
 
+    //m_importService.ImportStoreSummary();
+
     return true;
 }
 

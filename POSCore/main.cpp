@@ -1,0 +1,137 @@
+﻿// POSReportGenerator.cpp : 此檔案包含 'main' 函式。程式會於該處開始執行及結束執行。
+//
+
+#include <iostream>
+
+#include "StoreInfo.h"
+#include "SQLiteHelper.h"
+#include "PosRepository.h"
+#include "DatabaseInitializer.h"
+#include "ExcelReader.h"
+
+
+int main()
+{
+    DatabaseInitializer initializer;
+
+    if (initializer.Initialize())
+    {
+        std::cout
+            << "Database Initialize Success!"
+            << std::endl;
+    }
+    else
+    {
+        std::cout
+            << "Database Initialize Failed!"
+            << std::endl;
+    }
+
+    ExcelReader reader;
+
+    auto stores =
+        reader.ReadStoreSummary(
+            "Resources/071301.csv");
+
+    PosRepository repository;
+
+    if (repository.Import(stores))
+    {
+        std::cout
+            << "Import Success!"
+            << std::endl;
+    }
+    else
+    {
+        std::cout
+            << "Import Failed!"
+            << std::endl;
+    }
+
+    auto queryStores =
+        repository.GetSummary();
+
+    std::cout
+        << "Store Count : "
+        << queryStores.size()
+        << std::endl;
+
+    if (!queryStores.empty())
+    {
+        const StoreInfo& store =
+            queryStores.front();
+
+        std::cout
+            << "StoreNo : "
+            << store.GetStoreNo()
+            << std::endl;
+
+        std::cout
+            << "StoreName : "
+            << store.GetStoreName()
+            << std::endl;
+
+        std::cout
+            << "UpdateStatus : "
+            << store.GetUpdateStatus()
+            << std::endl;
+
+        std::cout
+            << "PosCount : "
+            << store.GetPosCount()
+            << std::endl;
+
+        std::cout
+            << "UpdatedPos : "
+            << store.GetUpdatedPos()
+            << std::endl;
+
+        std::cout
+            << "UpdateRate : "
+            << store.GetUpdateRate()
+            << std::endl;
+
+        std::cout
+            << "OpenDate : "
+            << store.GetOpenDate()
+            << std::endl;
+    }
+
+    return 0;
+}
+
+
+//CSV
+//│
+//▼
+//ExcelReader
+//│
+//▼
+//stores
+//│
+//▼
+//Repository.Import()
+//│
+//▼
+//SQLite
+//│
+//▼
+//Repository.GetSummary()
+//│
+//▼
+//queryStores
+//│
+//▼
+//Console
+
+
+// 執行程式: Ctrl + F5 或 [偵錯] > [啟動但不偵錯] 功能表
+// 偵錯程式: F5 或 [偵錯] > [啟動偵錯] 功能表
+
+// 開始使用的提示: 
+//   1. 使用 [方案總管] 視窗，新增/管理檔案
+//   2. 使用 [Team Explorer] 視窗，連線到原始檔控制
+//   3. 使用 [輸出] 視窗，參閱組建輸出與其他訊息
+//   4. 使用 [錯誤清單] 視窗，檢視錯誤
+//   5. 前往 [專案] > [新增項目]，建立新的程式碼檔案，或是前往 [專案] > [新增現有項目]，將現有程式碼檔案新增至專案
+//   6. 之後要再次開啟此專案時，請前往 [檔案] > [開啟] > [專案]，然後選取 .sln 檔案

@@ -1,5 +1,7 @@
 #pragma once
+#include <vector>
 #include "Toolbar.h"
+#include "StoreInfo.h"
 
 class MainWindow
 {
@@ -10,5 +12,9 @@ public:
 private:
 
     Toolbar m_toolbar;
+
+    void DrawStoreTable();
+
+    std::vector<StoreInfo> m_storeList;
 };
 

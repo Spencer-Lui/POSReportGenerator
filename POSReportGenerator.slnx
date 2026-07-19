@@ -3,6 +3,7 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
+  <Project Path="POSCore/POSCore.vcxproj" Id="9d97ee03-d532-4c79-9234-1086c8f8ec7b" />
   <Project Path="POSReportGenerator/POSReportGenerator.vcxproj" Id="57964009-b31c-449e-a877-02e0f75d864a" />
   <Project Path="POSReportGenerator_UI/POSReportGenerator_UI.vcxproj" Id="23897f52-de5e-43d4-b298-3d2aa6c95597" />
 </Solution>
