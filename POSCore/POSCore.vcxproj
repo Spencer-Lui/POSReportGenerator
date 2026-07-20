@@ -153,6 +153,7 @@
     <ClInclude Include="StoreService.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\POSReportGenerator\ThirdParty\SQLite\sqlite3.c" />
     <ClCompile Include="DatabaseInitializer.cpp" />
     <ClCompile Include="DatabaseResult.cpp" />
     <ClCompile Include="ExcelReader.cpp" />

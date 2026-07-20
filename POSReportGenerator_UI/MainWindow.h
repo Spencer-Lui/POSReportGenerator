@@ -2,6 +2,8 @@
 #include <vector>
 #include "Toolbar.h"
 #include "StoreInfo.h"
+#include "StoreService.h"
+
 
 class MainWindow
 {
@@ -15,6 +17,7 @@ private:
 
     void DrawStoreTable();
 
-    std::vector<StoreInfo> m_storeList;
+    //std::vector<StoreInfo> m_storeList;
+    StoreService m_storeService;
 };
 

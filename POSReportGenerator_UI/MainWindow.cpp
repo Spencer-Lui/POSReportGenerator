@@ -35,6 +35,35 @@ void MainWindow::DrawStoreTable()
 
         ImGui::TableHeadersRow();
 
+        auto stores =
+            m_storeService.GetSummary();
+
+        for (const auto& store : stores)
+        {
+            ImGui::TableNextRow();
+
+            ImGui::TableSetColumnIndex(0);
+            ImGui::Text("%s", store.GetStoreNo().c_str());
+
+            ImGui::TableSetColumnIndex(1);
+            ImGui::Text("%s", store.GetStoreName().c_str());
+
+            ImGui::TableSetColumnIndex(2);
+            ImGui::Text("%s", store.GetUpdateStatus().c_str());
+
+            ImGui::TableSetColumnIndex(3);
+            ImGui::Text("%d", store.GetPosCount());
+
+            ImGui::TableSetColumnIndex(4);
+            ImGui::Text("%d", store.GetUpdatedPos());
+
+            ImGui::TableSetColumnIndex(5);
+            ImGui::Text("%d%%", store.GetUpdateRate());
+
+            ImGui::TableSetColumnIndex(6);
+            ImGui::Text("%s", store.GetOpenDate().c_str());
+        }
+
         ImGui::EndTable();
     }
 }
