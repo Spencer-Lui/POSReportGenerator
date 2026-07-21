@@ -17,7 +17,10 @@ private:
 
     void DrawStoreTable();
 
+    void DrawStoreRow(const StoreInfo& store);
     //std::vector<StoreInfo> m_storeList;
+    void DrawUpdateStatus(const StoreInfo& store);
+
     StoreService m_storeService;
 };
 

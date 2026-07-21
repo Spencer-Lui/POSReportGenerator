@@ -2,17 +2,14 @@
 
 #include "imgui.h"
 
-void Toolbar::Draw()
+bool Toolbar::DrawImportButton()
 {
-    if (ImGui::Button("Import CSV"))
-    {
+    return ImGui::Button("Import CSV");
+}
 
-    }
-
+bool Toolbar::DrawExportButton()
+{
     ImGui::SameLine();
 
-    if (ImGui::Button("Export Excel"))
-    {
-
-    }
+    return ImGui::Button("Export CSV");
 }

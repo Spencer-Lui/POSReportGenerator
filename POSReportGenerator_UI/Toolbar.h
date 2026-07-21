@@ -4,6 +4,8 @@ class Toolbar
 {
 public:
 
-    void Draw();
+    bool DrawImportButton();
+
+    bool DrawExportButton();
 };
 

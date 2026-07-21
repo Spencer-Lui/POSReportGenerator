@@ -10,7 +10,15 @@ void MainWindow::Draw()
 
     ImGui::Separator();
 
-    m_toolbar.Draw();
+    if (m_toolbar.DrawImportButton())
+    {
+        // 目前保留
+    }
+
+    if (m_toolbar.DrawExportButton())
+    {
+        // 下一章接 ExportService
+    }
 
     ImGui::Separator();
 
@@ -23,7 +31,12 @@ void MainWindow::DrawStoreTable()
 {
     if (ImGui::BeginTable(
         "StoreTable",
-        7))
+        7,
+        ImGuiTableFlags_Borders |
+        ImGuiTableFlags_RowBg |
+        ImGuiTableFlags_Resizable |
+        ImGuiTableFlags_ScrollY |
+        ImGuiTableFlags_Sortable))
     {
         ImGui::TableSetupColumn("Store No");
         ImGui::TableSetupColumn("Store Name");
@@ -33,37 +46,76 @@ void MainWindow::DrawStoreTable()
         ImGui::TableSetupColumn("Rate");
         ImGui::TableSetupColumn("Open Date");
 
+        ImGui::TableSetupScrollFreeze(0, 1);
         ImGui::TableHeadersRow();
+
+        ImGuiTableSortSpecs* sortSpecs =
+            ImGui::TableGetSortSpecs();
 
         auto stores =
             m_storeService.GetSummary();
 
         for (const auto& store : stores)
         {
-            ImGui::TableNextRow();
-
-            ImGui::TableSetColumnIndex(0);
-            ImGui::Text("%s", store.GetStoreNo().c_str());
-
-            ImGui::TableSetColumnIndex(1);
-            ImGui::Text("%s", store.GetStoreName().c_str());
-
-            ImGui::TableSetColumnIndex(2);
-            ImGui::Text("%s", store.GetUpdateStatus().c_str());
-
-            ImGui::TableSetColumnIndex(3);
-            ImGui::Text("%d", store.GetPosCount());
-
-            ImGui::TableSetColumnIndex(4);
-            ImGui::Text("%d", store.GetUpdatedPos());
-
-            ImGui::TableSetColumnIndex(5);
-            ImGui::Text("%d%%", store.GetUpdateRate());
-
-            ImGui::TableSetColumnIndex(6);
-            ImGui::Text("%s", store.GetOpenDate().c_str());
+            DrawStoreRow(store);
         }
 
         ImGui::EndTable();
+    }
+}
+void MainWindow::DrawStoreRow(const StoreInfo& store)
+{
+    ImGui::TableNextRow();
+
+    ImGui::TableSetColumnIndex(0);
+    ImGui::Text("%s", store.GetStoreNo().c_str());
+
+    ImGui::TableSetColumnIndex(1);
+    ImGui::Text("%s", store.GetStoreName().c_str());
+
+    ImGui::TableSetColumnIndex(2);
+    //ImGui::Text("%s", store.GetUpdateStatus().c_str());
+    DrawUpdateStatus(store);
+
+    ImGui::TableSetColumnIndex(3);
+    ImGui::Text("%d", store.GetPosCount());
+
+    ImGui::TableSetColumnIndex(4);
+    ImGui::Text("%d", store.GetUpdatedPos());
+
+    ImGui::TableSetColumnIndex(5);
+    ImGui::Text("%d%%", store.GetUpdateRate());
+
+    ImGui::TableSetColumnIndex(6);
+    ImGui::Text("%s", store.GetOpenDate().c_str());
+}
+void MainWindow::DrawUpdateStatus(const StoreInfo& store)
+{
+    const std::string& status = store.GetUpdateStatus();
+
+    if (status == "Success")
+    {
+        ImGui::TextColored(
+            ImVec4(0.0f, 1.0f, 0.0f, 1.0f),
+            "%s",
+            status.c_str());
+    }
+    else if (status == "Updating")
+    {
+        ImGui::TextColored(
+            ImVec4(1.0f, 1.0f, 0.0f, 1.0f),
+            "%s",
+            status.c_str());
+    }
+    else if (status == "Failed")
+    {
+        ImGui::TextColored(
+            ImVec4(1.0f, 0.0f, 0.0f, 1.0f),
+            "%s",
+            status.c_str());
+    }
+    else
+    {
+        ImGui::Text("%s", status.c_str());
     }
 }
