@@ -10,6 +10,8 @@ class Application
 {
 public:
 
+    bool Initialize();
+
     int Run();
 
     void Render();
@@ -27,8 +29,6 @@ public:
     bool ProcessMessages();
 
 private:
-
-    bool Initialize();
 
     bool InitializeWindow();
 

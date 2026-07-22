@@ -6,6 +6,7 @@
 #include "PosRepository.h"
 #include "MainWindow.h"
 #include "Application.h"
+#include "DatabaseInitializer.h"
 
 static IDXGISwapChain*          g_pSwapChain = nullptr;
 static bool                     g_SwapChainOccluded = false;
@@ -40,6 +41,11 @@ int main(int, char**)
     if (!app.GetGraphics().Initialize(hwnd))
     {
         ::UnregisterClassW(wc.lpszClassName, wc.hInstance);
+        return 1;
+    }
+
+    if (!app.Initialize())
+    {
         return 1;
     }
 

@@ -10,17 +10,54 @@ void MainWindow::Draw()
 
     ImGui::Separator();
 
-    if (m_toolbar.DrawImportButton())
-    {
-        // 目前保留
-    }
+    //if (m_toolbar.DrawImportButton())
+    //{
+    //    // 下一章接 ExportService
+    //}
 
     if (m_toolbar.DrawExportButton())
     {
-        // 下一章接 ExportService
+        auto stores =
+            m_storeService.GetSummary();
+
+        bool result =
+            m_exportService.ExportStoreSummary(
+                stores,
+                "POSReport.csv");
+
+        if (result)
+        {
+            m_statusMessage = "Export Success!";
+            m_exportSuccess = true;
+        }
+        else
+        {
+            m_statusMessage = "Export Failed!";
+            m_exportSuccess = false;
+        }
     }
 
     ImGui::Separator();
+
+    if (!m_statusMessage.empty())
+    {
+        if (m_exportSuccess)
+        {
+            ImGui::TextColored(
+                ImVec4(0.0f, 1.0f, 0.0f, 1.0f),
+                "%s",
+                m_statusMessage.c_str());
+        }
+        else
+        {
+            ImGui::TextColored(
+                ImVec4(1.0f, 0.0f, 0.0f, 1.0f),
+                "%s",
+                m_statusMessage.c_str());
+        }
+
+        ImGui::Separator();
+    }
 
     DrawStoreTable();
 

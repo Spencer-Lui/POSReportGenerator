@@ -1,4 +1,5 @@
 #include <vector>
+#include <iostream>
 #include "SQLiteHelper.h"
 
 
@@ -80,6 +81,16 @@ bool SQLiteHelper::ExecuteNonQuery(
 
     if (result != SQLITE_OK)
     {
+        std::cout
+            << "SQLite ExecuteNonQuery Error : "
+            << (errorMessage != nullptr ? errorMessage : "Unknown")
+            << std::endl;
+
+        std::cout
+            << "SQL = "
+            << sql
+            << std::endl;
+
         if (errorMessage != nullptr)
         {
             sqlite3_free(errorMessage);
@@ -108,6 +119,15 @@ SQLiteHelper::ExecuteQuery(
 
     if (result != SQLITE_OK)
     {
+        std::cout
+            << "SQLite ExecuteQuery Error : "
+            << (errorMessage != nullptr ? errorMessage : "Unknown")
+            << std::endl;
+
+        std::cout
+            << "SQL = "
+            << sql
+            << std::endl;
         if (errorMessage != nullptr)
         {
             sqlite3_free(errorMessage);

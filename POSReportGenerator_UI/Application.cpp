@@ -2,34 +2,40 @@
 #include "imgui.h"
 #include "backends/imgui_impl_dx11.h"
 #include "backends/imgui_impl_win32.h"
+#include "DatabaseInitializer.h"
+
+DatabaseInitializer initializer;
 
 int Application::Run()
 {
-    //if (!Initialize())
-    //{
-    //    return -1;
-    //}
+    if (!Initialize())
+    {
+        return -1;
+    }
 
-    ////--------------------------------
-    //// Main Loop
-    ////--------------------------------
+    while (!m_done)
+    {
+        Update();
 
-    //while (!m_done)
-    //{
-    //    Update();
+        Render();
 
-    //    Render();
+        break;
+    }
 
-    //    break;
-    //}
-
-    //Shutdown();
+    Shutdown();
 
     return 0;
 }
 
+
+
 bool Application::Initialize()
 {
+    if (!initializer.Initialize())
+    {
+        return false;
+    }
+
     if (!InitializeWindow())
     {
         return false;
@@ -40,7 +46,10 @@ bool Application::Initialize()
         return false;
     }
 
-    //m_importService.ImportStoreSummary();
+    if (!m_importService.ImportStoreSummary())
+    {
+        return false;
+    }
 
     return true;
 }

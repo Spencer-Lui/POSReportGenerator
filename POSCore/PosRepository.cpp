@@ -1,3 +1,5 @@
+#include <filesystem>
+#include <iostream>
 #include "PosRepository.h"
 #include "SQLiteHelper.h"
 
@@ -31,15 +33,41 @@ PosRepository::GetSummary()
 {
     std::vector<StoreInfo> stores;
 
-    if (!m_database.Open(
-        DATABASE_PATH))
+    std::cout
+        << "Database Current Path = "
+        << std::filesystem::current_path()
+        << std::endl;
+
+    std::cout
+        << "Database File = "
+        << DATABASE_PATH
+        << std::endl;
+
+    std::cout
+        << "Database Exists = "
+        << std::filesystem::exists(DATABASE_PATH)
+        << std::endl;
+
+    if (!m_database.Open(DATABASE_PATH))
     {
+        std::cout << "Open Database Failed!" << std::endl;
+
         return stores;
     }
 
     auto rows =
         m_database.ExecuteQuery(
             SELECT_STORE_SUMMARY);
+
+    std::cout
+        << "SQLite Rows = "
+        << rows.size()
+        << std::endl;
+
+    std::cout
+        << "Row Count = "
+        << rows.size()
+        << std::endl;
 
     for (const auto& row : rows)
     {
@@ -69,6 +97,19 @@ PosRepository::GetSummary()
             row[6]);
 
         stores.push_back(store);
+
+        static int printCount = 0;
+
+        if (printCount < 10)
+        {
+            std::cout
+                << store.GetStoreNo()
+                << " "
+                << store.GetStoreName()
+                << std::endl;
+
+            ++printCount;
+        }
     }
 
     m_database.Close();
@@ -100,16 +141,29 @@ bool PosRepository::Import(
     // 匯入所有門市
     //-----------------------------------
 
+    int insertCount = 0;
+
     for (const auto& store : stores)
     {
         if (!InsertStore(store))
         {
+            std::cout
+                << "Insert Failed : "
+                << store.GetStoreNo()
+                << std::endl;
+
             m_database.Close();
 
             return false;
         }
+
+        insertCount++;
     }
 
+    std::cout
+        << "Insert Count = "
+        << insertCount
+        << std::endl;
 
     m_database.Close();
 

@@ -3,6 +3,7 @@
 #include "Toolbar.h"
 #include "StoreInfo.h"
 #include "StoreService.h"
+#include "ExportService.h"
 
 
 class MainWindow
@@ -22,5 +23,11 @@ private:
     void DrawUpdateStatus(const StoreInfo& store);
 
     StoreService m_storeService;
+
+    ExportService m_exportService;
+
+    std::string m_statusMessage;
+
+    bool m_exportSuccess = true;
 };
 
