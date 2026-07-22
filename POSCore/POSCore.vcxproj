@@ -167,6 +167,9 @@
     <ClCompile Include="StoreInfo.cpp" />
     <ClCompile Include="StoreService.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\POSReportGenerator_UI\Assets\Fonts\NotoSansTC-VariableFont_wght.ttf" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -83,4 +83,9 @@
       <Filter>來源檔案</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\POSReportGenerator_UI\Assets\Fonts\NotoSansTC-VariableFont_wght.ttf">
+      <Filter>資源檔</Filter>
+    </Font>
+  </ItemGroup>
 </Project>
