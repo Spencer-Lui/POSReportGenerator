@@ -11,7 +11,9 @@ ExcelReader::ReadStoreSummary(
 {
     std::vector<StoreInfo> stores;
 
-    std::ifstream file(filePath);
+    std::ifstream file(
+        filePath,
+        std::ios::binary);
 
     std::cout << "Current Path = "
         << std::filesystem::current_path()
@@ -41,6 +43,11 @@ ExcelReader::ReadStoreSummary(
 
         try
         {
+            if (!line.empty() &&
+                (unsigned char)line[0] == 0xEF)
+            {
+                line.erase(0, 3);
+            }
 
             if (isFirstLine)
             {

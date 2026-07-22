@@ -60,6 +60,12 @@ int main(int, char**)
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
 
+    io.Fonts->AddFontFromFileTTF(
+        "C:/Windows/Fonts/msjh.ttc",
+        18.0f,
+        nullptr,
+        io.Fonts->GetGlyphRangesChineseFull());
+
     // Setup Dear ImGui style
     ImGui::StyleColorsDark();
     //ImGui::StyleColorsLight();
