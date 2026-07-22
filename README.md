@@ -2,6 +2,8 @@
 
 A desktop POS report generator written in Modern C++.
 
+<img width="882" height="595" alt="image" src="https://github.com/user-attachments/assets/5bc08141-485a-4acc-9518-6c6e03501f43" />
+
 ## Features
 
 - CSV Import
