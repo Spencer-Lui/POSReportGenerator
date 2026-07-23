@@ -2,8 +2,6 @@
 
 A desktop POS report generator written in Modern C++.
 
-<img width="882" height="595" alt="image" src="https://github.com/user-attachments/assets/5bc08141-485a-4acc-9518-6c6e03501f43" />
-
 ## Features
 
 - CSV Import
@@ -13,14 +11,21 @@ A desktop POS report generator written in Modern C++.
 - Service Layer
 - Layered Architecture
 
-## Technologies
+## 🛠 Tech Stack
 
 - C++17
 - Dear ImGui
 - SQLite3
-- Visual Studio 2022
+- Visual Studio 2026
 
-## Screenshot
+## 📸 Screenshot
 
-(Coming soon)
+(放今天完成的 UI 截圖)
+
+<img width="882" height="595" alt="image" src="https://github.com/user-attachments/assets/5bc08141-485a-4acc-9518-6c6e03501f43" />
+
+POSCore/
+POSReportGenerator_UI/
+Resources/
+Assets/
 
