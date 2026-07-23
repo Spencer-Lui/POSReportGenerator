@@ -8,10 +8,10 @@
 #include "Application.h"
 #include "DatabaseInitializer.h"
 
-static IDXGISwapChain*          g_pSwapChain = nullptr;
+//static IDXGISwapChain*          g_pSwapChain = nullptr;
 static bool                     g_SwapChainOccluded = false;
 static UINT                     g_ResizeWidth = 0, g_ResizeHeight = 0;
-static ID3D11RenderTargetView*  g_mainRenderTargetView = nullptr;
+//static ID3D11RenderTargetView*  g_mainRenderTargetView = nullptr;
 
 void CleanupRenderTarget();
 LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
