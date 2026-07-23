@@ -1,4 +1,5 @@
 #include "MainWindow.h"
+#include "PathHelper.h"
 #include "imgui.h"
 
 void MainWindow::Draw()
@@ -20,7 +21,8 @@ void MainWindow::Draw()
             m_storeService.GetSummary();
 
         std::string exportPath =
-            "POSReport.csv";
+            PathHelper::GetDesktopPath()
+            + "\\POSReport.csv";
 
         bool result =
             m_exportService.ExportStoreSummary(

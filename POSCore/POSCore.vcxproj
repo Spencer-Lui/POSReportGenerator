@@ -149,6 +149,7 @@
     <ClInclude Include="ExcelReader.h" />
     <ClInclude Include="ExportService.h" />
     <ClInclude Include="ImportService.h" />
+    <ClInclude Include="PathHelper.h" />
     <ClInclude Include="PosRepository.h" />
     <ClInclude Include="SQLiteHelper.h" />
     <ClInclude Include="StoreInfo.h" />
@@ -162,6 +163,7 @@
     <ClCompile Include="ExportService.cpp" />
     <ClCompile Include="ImportService.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PathHelper.cpp" />
     <ClCompile Include="PosRepository.cpp" />
     <ClCompile Include="SQLiteHelper.cpp" />
     <ClCompile Include="StoreInfo.cpp" />
