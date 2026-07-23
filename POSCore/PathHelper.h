@@ -1,0 +1,11 @@
+#pragma once
+
+#include <string>
+
+class PathHelper
+{
+public:
+
+    static std::string GetDesktopPath();
+};
+
