@@ -4,11 +4,12 @@ A desktop POS report generator written in Modern C++.
 
 ## Features
 
+- CSV Export
 - SQLite Database
 - Dear ImGui UI
+- Layered Architecture
 - Repository Pattern
 - Service Layer
-- Layered Architecture
 
 ## 🛠 Tech Stack
 
