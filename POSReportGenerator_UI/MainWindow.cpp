@@ -1,6 +1,10 @@
 #include "MainWindow.h"
 #include "PathHelper.h"
 #include "imgui.h"
+#include <chrono>
+#include <ctime>
+#include <iomanip>
+#include <sstream>
 
 void MainWindow::Draw()
 {
@@ -20,9 +24,11 @@ void MainWindow::Draw()
         auto stores =
             m_storeService.GetSummary();
 
-        std::string exportPath =
+        /*std::string exportPath =
             PathHelper::GetDesktopPath()
-            + "\\POSReport.csv";
+            + "\\POSReport.csv";*/
+        std::string exportPath =
+            CreateExportFilePath();
 
         bool result =
             m_exportService.ExportStoreSummary(
@@ -172,4 +178,28 @@ void MainWindow::DrawUpdateStatus(const StoreInfo& store)
     {
         ImGui::Text("%s", status.c_str());
     }
+}
+std::string MainWindow::CreateExportFilePath()
+{
+    auto now =
+        std::chrono::system_clock::now();
+
+    auto time =
+        std::chrono::system_clock::to_time_t(now);
+
+    std::tm localTime{};
+
+    localtime_s(&localTime, &time);
+
+    std::ostringstream oss;
+
+    oss
+        << PathHelper::GetDesktopPath()
+        << "\\POSReport_"
+        << std::put_time(
+            &localTime,
+            "%Y%m%d_%H%M%S")
+        << ".csv";
+
+    return oss.str();
 }

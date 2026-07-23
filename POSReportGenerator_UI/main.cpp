@@ -99,7 +99,10 @@ int main(int, char**)
         }
 
         // Handle window being minimized or screen locked
-        if (g_SwapChainOccluded && g_pSwapChain->Present(0, DXGI_PRESENT_TEST) == DXGI_STATUS_OCCLUDED)
+        if (g_SwapChainOccluded &&
+            app.GetGraphics().GetSwapChain()->Present(
+                0,
+                DXGI_PRESENT_TEST) == DXGI_STATUS_OCCLUDED)
         {
             ::Sleep(10);
             continue;
@@ -142,11 +145,11 @@ int main(int, char**)
     return 0;
 }
 
-void CleanupRenderTarget()
-{
-    if (g_mainRenderTargetView) { g_mainRenderTargetView->Release(); g_mainRenderTargetView = nullptr; }
-    //graphics.CleanupRenderTarget();
-}
+//void CleanupRenderTarget()
+//{
+//    if (g_mainRenderTargetView) { g_mainRenderTargetView->Release(); g_mainRenderTargetView = nullptr; }
+//    //graphics.CleanupRenderTarget();
+//}
 
 // Forward declare message handler from imgui_impl_win32.cpp
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);

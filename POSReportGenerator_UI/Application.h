@@ -3,6 +3,7 @@
 #include "MainWindow.h"
 #include "GraphicsDevice.h"
 #include "ImportService.h"
+#include "DatabaseInitializer.h"
 #include "imgui.h"
 
 
@@ -55,5 +56,7 @@ private:
     ImVec4 m_clearColor = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
     ImportService m_importService;
+
+    DatabaseInitializer m_databaseInitializer;
 
 };

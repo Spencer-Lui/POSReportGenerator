@@ -146,6 +146,7 @@
   <ItemGroup>
     <ClInclude Include="DatabaseInitializer.h" />
     <ClInclude Include="DatabaseResult.h" />
+    <ClInclude Include="DateTimeHelper.h" />
     <ClInclude Include="ExcelReader.h" />
     <ClInclude Include="ExportService.h" />
     <ClInclude Include="ImportService.h" />
@@ -159,6 +160,7 @@
     <ClCompile Include="..\POSReportGenerator\ThirdParty\SQLite\sqlite3.c" />
     <ClCompile Include="DatabaseInitializer.cpp" />
     <ClCompile Include="DatabaseResult.cpp" />
+    <ClCompile Include="DateTimeHelper.cpp" />
     <ClCompile Include="ExcelReader.cpp" />
     <ClCompile Include="ExportService.cpp" />
     <ClCompile Include="ImportService.cpp" />

@@ -31,5 +31,9 @@ private:
     std::string m_statusMessage;
 
     bool m_exportSuccess = true;
+
+private:
+
+    std::string CreateExportFilePath();
 };
 

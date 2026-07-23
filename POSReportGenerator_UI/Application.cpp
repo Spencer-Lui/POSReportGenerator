@@ -2,9 +2,8 @@
 #include "imgui.h"
 #include "backends/imgui_impl_dx11.h"
 #include "backends/imgui_impl_win32.h"
-#include "DatabaseInitializer.h"
+#include <tchar.h>
 
-DatabaseInitializer initializer;
 
 int Application::Run()
 {
@@ -12,6 +11,13 @@ int Application::Run()
     {
         return -1;
     }
+
+    /*ImGuiIO& io = ImGui::GetIO(); (void)io;
+    io.Fonts->AddFontFromFileTTF(
+        "C:/Windows/Fonts/msjh.ttc",
+        18.0f,
+        nullptr,
+        io.Fonts->GetGlyphRangesChineseFull());*/
 
     while (!m_done)
     {
@@ -31,7 +37,7 @@ int Application::Run()
 
 bool Application::Initialize()
 {
-    if (!initializer.Initialize())
+    if (!m_databaseInitializer.Initialize())
     {
         return false;
     }
