@@ -1,5 +1,4 @@
 #include "MainWindow.h"
-
 #include "imgui.h"
 
 void MainWindow::Draw()
@@ -20,20 +19,27 @@ void MainWindow::Draw()
         auto stores =
             m_storeService.GetSummary();
 
+        std::string exportPath =
+            "POSReport.csv";
+
         bool result =
             m_exportService.ExportStoreSummary(
                 stores,
-                "POSReport.csv");
+                exportPath);
 
         if (result)
         {
             m_statusMessage = "Export Success!";
             m_exportSuccess = true;
+
+            m_lastExportPath = exportPath;
         }
         else
         {
             m_statusMessage = "Export Failed!";
             m_exportSuccess = false;
+
+            m_lastExportPath.clear();
         }
     }
 
@@ -54,6 +60,15 @@ void MainWindow::Draw()
                 ImVec4(1.0f, 0.0f, 0.0f, 1.0f),
                 "%s",
                 m_statusMessage.c_str());
+        }
+
+        if (!m_lastExportPath.empty())
+        {
+            ImGui::Text("Output:");
+
+            ImGui::TextWrapped(
+                "%s",
+                m_lastExportPath.c_str());
         }
 
         ImGui::Separator();

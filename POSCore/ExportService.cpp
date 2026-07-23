@@ -6,12 +6,17 @@ bool ExportService::ExportStoreSummary(
     const std::vector<StoreInfo>& stores,
     const std::string& filePath)
 {
-    std::ofstream file(filePath);
+    std::ofstream file(
+        filePath,
+        std::ios::binary);
 
     if (!file.is_open())
     {
         return false;
     }
+
+    // UTF-8 BOM
+    file.write("\xEF\xBB\xBF", 3);
 
     file << "Store No,"
         << "Store Name,"

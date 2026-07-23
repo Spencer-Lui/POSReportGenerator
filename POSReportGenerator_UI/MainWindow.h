@@ -26,6 +26,8 @@ private:
 
     ExportService m_exportService;
 
+    std::string m_lastExportPath;
+
     std::string m_statusMessage;
 
     bool m_exportSuccess = true;
